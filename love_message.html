@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Message</title>
+    <style>
+        /* CSS styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial, sans-serif';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Video background */
+        #video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Ensures content is above the video */
+        }
+
+        .content h1 {
+            font-size: 2.5em;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.5em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+    <video id="video-bg" autoplay loop muted>
+        <source src="background2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <div class="content">
+            <h1>Forever Yours</h1>
+            <p>
+                You make the small moment special. Life is not going to be full of heart throbbing thrills and nonstop adventure, but when it slows down,i'll know i can sit with you,talk with you or hold your hand, and still feel like i am going 1000 miles an hour.
+                Love is not about how many days, months, or years we have been together.
+                It's about how much we love each other every single day. I promise to love you, to cherish you, and to make every moment with you as wonderful as you are. 💖
+            </p>
+        </div>
+    </div>
+</body>
+</html>

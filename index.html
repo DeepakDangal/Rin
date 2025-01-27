@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You Are My Everything</title>
+    <style>
+        /* CSS styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial, sans-serif';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Video background */
+        #video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Ensures content is above the video */
+        }
+
+        .content h1 {
+            font-size: 2.5em;
+            color: #ff6f61;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #e65a50;
+        }
+
+        .no-btn {
+            animation: moveButton 0.5s ease-in-out;
+        }
+
+        @keyframes moveButton {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -20px); }
+            50% { transform: translate(-50px, -20px); }
+            75% { transform: translate(50px, 20px); }
+            100% { transform: translate(-50px, 20px); }
+        }
+
+        @media (max-width: 600px) {
+            .content h1 {
+                font-size: 2em;
+            }
+
+            .content p {
+                font-size: 1em;
+            }
+
+            button {
+                font-size: 0.9em;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        .modal img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Slideshow */
+        .slideshow {
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slideshow img {
+            width: 100%;
+            display: none;
+        }
+
+        .slideshow img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Video Background -->
+   <video id="video-bg" autoplay loop muted>
+        <source src="background3.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video> 
+
+    <div class="container">
+        <div class="content">
+            <h1>You Are Such A Beautiful Soul💖 </h1>
+            <p>My heart, unbidden, finds itself drawn to you, as the tide to the moon, helpless yet certain—truly, I like you💓</p>
+            <div class="buttons">
+                <button onclick="openLovePage()">Yes, Always!</button>
+                <button id="noBtn" onclick="handleNoClick()">No</button>
+            </div>
+            <div class="slideshow">
+                <img src="photo1.jpg" alt="Memory 1" class="active">
+                <img src="photo2.jpg" alt="Memory 2">
+              <img src="photo3.jpg" alt="Memory 3">
+                <img src="photo4.jpg" alt="Memory 4"> 
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p>Every moment with you is like a beautiful dream I never want to wake up from. 💖</p>
+            <img src="romantic.jpg" alt="Romantic Moment">
+        </div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" autoplay loop>
+        <source src="romantic.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function openLovePage() {
+            window.open('love_message.html', '_blank'); // Open the new page in a new window/tab
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        function handleNoClick() {
+            window.location.href = 'no_response.html'; // Redirect to the new page
+        }
+
+        // Slideshow Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slideshow img');
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); // Change image every 5 seconds
+
+        // Close the modal when clicking outside of the modal content
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
